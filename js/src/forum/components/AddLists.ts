@@ -21,17 +21,17 @@ export default function () {
     const viewList = new ItemList();
 
     views.forEach((view, key) => {
-      const userName =
+      const displayName =
         view.user() === false
           ? app.translator.trans(
               "michaelbelgium-discussion-views.forum.viewlist.guest",
             )
-          : view.user().username();
+          : view.user().displayName();
 
       let listitem = m("div", { className: "item-lastUser-content" }, [
         avatar(<User>view.user()),
         m("div", [
-          userName,
+          displayName,
           m(
             "span",
             {
@@ -90,7 +90,7 @@ export default function () {
               ? app.translator.trans(
                   "michaelbelgium-discussion-views.forum.post.you",
                 )
-              : username(view.user()),
+              : view.user().displayName(),
           ),
         );
 
